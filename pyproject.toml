@@ -1,0 +1,49 @@
+[build-system]
+requires = ["scikit-build-core>=0.5", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "waferlens"
+version = "0.1.0"
+description = "CUDA-accelerated geometric feature extraction for semiconductor wafer maps"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Kamalasankari Subramaniakuppusamy"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.22",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "scipy>=1.9",
+    "scikit-image>=0.20",
+]
+probe = [
+    "torch>=2.0",
+    "transformers>=4.38",
+    "Pillow>=9.0",
+    "matplotlib>=3.6",
+]
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+wheel.packages = ["python/waferlens"]
+
+[tool.scikit-build.cmake.define]
+WAFERLENS_BUILD_TESTS = "OFF"
+WAFERLENS_BUILD_PYTHON = "ON"
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
