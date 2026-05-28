@@ -1,4 +1,4 @@
-# waferlens
+# Waferlens
 
 CUDA-accelerated geometric feature extraction for semiconductor wafer maps.
 
